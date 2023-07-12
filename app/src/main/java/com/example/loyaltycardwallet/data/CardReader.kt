@@ -8,6 +8,8 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CardReader(private val context: Context) {
 
@@ -25,7 +27,7 @@ class CardReader(private val context: Context) {
             csvLine = reader.readLine()
             while (csvLine != null) {
                 val row: List<String> = csvLine.split(";")
-                resultList.add(InputCard(shopName = row[0], cardName = row[1], color = row[2]))
+                resultList.add(InputCard(id = UUID.randomUUID().toString(), shopName = row[0], cardName = row[1], color = row[2]))
                 csvLine = reader.readLine()
             }
         } catch (e: IOException) {

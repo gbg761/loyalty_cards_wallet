@@ -6,12 +6,13 @@ import com.example.loyaltycardwallet.data.CardRepositoryImpl
 import com.example.loyaltycardwallet.data.source.CardDao
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineScope
 
 @Module
 class RepositoryModule {
 
     @Provides
-    fun provideCardRepository(cardReader: CardReader, localDataSource: CardDao): CardRepository {
-        return CardRepositoryImpl(cardReader, localDataSource)
+    fun provideCardRepository(cardReader: CardReader, localDataSource: CardDao, scope: CoroutineScope): CardRepository {
+        return CardRepositoryImpl(cardReader, localDataSource, scope)
     }
 }

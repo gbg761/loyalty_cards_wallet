@@ -1,9 +1,8 @@
 package com.example.loyaltycardwallet
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.loyaltycardwallet.di.AppComponent
-import com.example.loyaltycardwallet.di.DaggerAppComponent
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         appComponent = (application as App).appComponent
-        appComponent.getCardRepository()
+        val cardRepository = appComponent.getCardRepository()
+        //cardRepository.readCardsInfo()
+        cardRepository.getCardsInfo()
     }
 }
