@@ -20,13 +20,8 @@ class CardRepositoryImpl(
         }
     }
 
-    override fun getCardsInfo() {
-        scope.launch {
-            val cards = localDataSource.getInputCards()
-            Log.d("Repository", "inputCards.size = ${cards.size}")
-            cards.forEach {
-                Log.d("Repository", "card name = ${it.cardName}")
-            }
-        }
+    override suspend fun getCardsInfo(): List<InputCard> {
+        val cards = localDataSource.getInputCards()
+        return cards.toExternal()
     }
 }
