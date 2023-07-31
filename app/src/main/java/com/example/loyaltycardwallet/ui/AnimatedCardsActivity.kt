@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import androidx.core.view.forEachIndexed
@@ -105,5 +106,10 @@ class AnimatedCardsActivity : AppCompatActivity() {
         row.forEach { cardView: View ->
             cardView.translationX = value
         }
+    }
+
+    fun onCardClick(view: View) {
+        val shopName = view.findViewById<TextView>(R.id.nameCard).text
+        Toast.makeText(this, "shop name = $shopName", Toast.LENGTH_SHORT).show()
     }
 }
