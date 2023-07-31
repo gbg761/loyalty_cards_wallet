@@ -37,6 +37,8 @@ class AnimatedCardsActivity : AppCompatActivity() {
         val rootView = binding.root
         setContentView(rootView)
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         appComponent = (application as App).appComponent
         val factory = appComponent.getAnimatedCardsViewModelFactory()
         animatedCardsViewModel = ViewModelProvider(this, factory)[AnimatedCardsViewModel::class.java]
