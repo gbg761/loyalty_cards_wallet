@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Loyalty Card Wallet</string>
+
+    <!-- Анимированный список карт -->
+    <string name="random_cards">Случайные карты</string>
+    <string name="random_card_description">Чтобы начать пользоваться приложением, выберите карту из случайных или
+        нажмните на + для добавления своих карт
+    </string>
+    <!-- Анимированный список карт-->
+
+    <string name="carpisa">Carpisa\nYamamay</string>
+
 </resources>

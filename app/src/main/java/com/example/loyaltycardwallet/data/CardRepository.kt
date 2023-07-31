@@ -1,8 +1,10 @@
 package com.example.loyaltycardwallet.data
 
+import com.example.loyaltycardwallet.model.InputCard
+
 interface CardRepository {
 
     fun readCardsInfo()
 
-    fun getCardsInfo()
+    suspend fun getCardsInfo(): List<InputCard>
 }
