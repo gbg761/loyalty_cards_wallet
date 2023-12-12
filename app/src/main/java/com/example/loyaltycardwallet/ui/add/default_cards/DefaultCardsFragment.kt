@@ -1,4 +1,4 @@
-package com.example.loyaltycardwallet.ui.add
+package com.example.loyaltycardwallet.ui.add.default_cards
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.loyaltycardwallet.App
+import com.example.loyaltycardwallet.R
 import com.example.loyaltycardwallet.databinding.FragmentDefaultCardsBinding
 import com.example.loyaltycardwallet.di.AppComponent
 import com.example.loyaltycardwallet.model.InputCardWithType
+import com.example.loyaltycardwallet.ui.add.DefaultCardsAdapter
+import com.example.loyaltycardwallet.ui.add.DefaultCardsViewModel
 
 class DefaultCardsFragment : Fragment() {
 
@@ -39,8 +42,12 @@ class DefaultCardsFragment : Fragment() {
     }
 
     private fun initUi() {
-        binding.defaultCardsRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-        binding.defaultCardsRecyclerView.adapter = defaultCardsAdapter
+        with(binding) {
+            val margin = resources.getDimensionPixelSize(R.dimen.margin_default_cards_item)
+            defaultCardsRecyclerView.addItemDecoration(MarginItemDecoration(margin))
+            defaultCardsRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+            defaultCardsRecyclerView.adapter = defaultCardsAdapter
+        }
     }
 
     private fun subscribeUi() {
