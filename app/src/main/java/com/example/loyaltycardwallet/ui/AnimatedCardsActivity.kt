@@ -2,6 +2,7 @@ package com.example.loyaltycardwallet.ui
 
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import com.example.loyaltycardwallet.R
 import com.example.loyaltycardwallet.databinding.ActivityAnimatedCardsBinding
 import com.example.loyaltycardwallet.di.AppComponent
 import com.example.loyaltycardwallet.model.InputCard
+import com.example.loyaltycardwallet.ui.add.AddCardActivity
 import com.example.loyaltycardwallet.utils.dpToPx
 import com.example.loyaltycardwallet.utils.getScreenWidth
 
@@ -60,6 +62,11 @@ class AnimatedCardsActivity : AppCompatActivity() {
             val x1 = (layoutWidth.dpToPx() - getScreenWidth()).toFloat()
             val x2 = 5.dpToPx().toFloat()
             startAnimation(x1, x2)
+        }
+
+        binding.addCardBtn.setOnClickListener {
+            val intent = Intent(this, AddCardActivity::class.java)
+            startActivity(intent)
         }
 
         animatedCardsViewModel.getInputCards()

@@ -8,6 +8,7 @@ import com.example.loyaltycardwallet.di.modules.RepositoryModule
 import com.example.loyaltycardwallet.di.modules.StorageModule
 import com.example.loyaltycardwallet.di.modules.ViewModelFactoryModule
 import com.example.loyaltycardwallet.ui.AnimatedCardsViewModelFactory
+import com.example.loyaltycardwallet.ui.add.DefaultCardsViewModelFactory
 import dagger.BindsInstance
 import dagger.Component
 import kotlinx.coroutines.CoroutineScope
@@ -19,6 +20,8 @@ interface AppComponent {
     fun getCardRepository(): CardRepository
 
     fun getAnimatedCardsViewModelFactory(): AnimatedCardsViewModelFactory
+
+    fun getDefaultCardsViewModelFactory(): DefaultCardsViewModelFactory
 
     @Component.Builder
     interface AppComponentBuilder {
