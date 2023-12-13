@@ -2,6 +2,7 @@ package com.example.loyaltycardwallet.ui.add
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -18,7 +19,18 @@ class DefaultCardsAdapter :
 
     private val cards: ArrayList<InputCardWithType> = arrayListOf()
 
-    inner class AddCardViewHolder(val binding: ListItemAddCardBinding) : ViewHolder(binding.root)
+    inner class AddCardViewHolder(val binding: ListItemAddCardBinding) : ViewHolder(binding.root) {
+
+        fun bind(card: InputCardWithType) {
+            val roundDrawable = TextDrawable.builder()
+                .beginConfig()
+                .bold()
+                .endConfig()
+                .buildRound(card.getFirstLettersFromShopName(), Color.parseColor(card.color))
+            binding.cardRoundImageView.setImageDrawable(roundDrawable)
+            binding.shopNameTextView.text = card.shopName
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddCardViewHolder {
         val binding = ListItemAddCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,17 +42,13 @@ class DefaultCardsAdapter :
         with(holder) {
             when(card.type) {
                 CardType.CARD_WITH_GROUP_NAME -> {
+                    binding.groupNameTextView.visibility = View.VISIBLE
                     binding.groupNameTextView.text = card.groupLetter.toString()
+                    bind(card)
                 }
                 CardType.CARD_WO_GROUP_NAME -> {
-                    binding.shopNameTextView.text = card.shopName
-
-                    val roundDrawable = TextDrawable.builder()
-                        .beginConfig()
-                        .bold()
-                        .endConfig()
-                        .buildRound(card.getFirstLettersFromShopName(), Color.parseColor(card.color))
-                    binding.cardRoundImageView.setImageDrawable(roundDrawable)
+                    binding.groupNameTextView.visibility = View.INVISIBLE
+                    bind(card)
                 }
             }
         }

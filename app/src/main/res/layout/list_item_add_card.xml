@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:paddingStart="15dp"
     android:paddingEnd="15dp">
 
@@ -11,7 +10,7 @@
         android:id="@+id/groupNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"
         android:textAllCaps="true"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -23,17 +22,19 @@
         android:id="@+id/cardRoundImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="30dp" />
+        android:layout_marginStart="45dp" />
 
     <TextView
         android:id="@+id/shopNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/cardRoundImageView"
         android:ellipsize="end"
         android:maxLines="1"
+        android:textColor="@color/black"
         android:textSize="15sp"
         tools:text="Иль Де Ботэ" />
 
-</LinearLayout>
+</RelativeLayout>
